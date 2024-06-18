@@ -1,0 +1,23 @@
+---
+- name: first playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: install docker software
+      yum:
+        name: docker
+        state: latest
+      tags: a
+
+    - name: start web server
+      service:
+        name: docker
+        state: started
+      tags: b
+    
+    - name: install git
+      yum:
+        name: git
+        state: latest
+      tags: c
+
